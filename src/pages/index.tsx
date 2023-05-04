@@ -2,7 +2,33 @@ import Image from 'next/image'
 import { Inter } from 'next/font/google'
 import { Grid, TextField, Button, Card, Typography, Box } from '@mui/material'
 import { useForm } from 'react-hook-form';
+import { db } from "./.././services/firebase-config.js";
+import {
+  doc,
+  collection,
+  getDocs,
+  addDoc,
+  setDoc,
+  deleteDoc,
+  Timestamp,
+} from "../../node_modules/firebase/firestore";
 
+const collectionmensajes = "mensajes";
+
+export async function getMensajes() {
+  const colRef = collection(db, collectionmensajes);
+  const docsRef = await getDocs(colRef);
+  console.log(docsRef);
+}
+
+getMensajes();
+
+
+export function addMensaje(data:FormValues) {
+  
+  addDoc(collection(db, collectionmensajes), data);
+  
+}
 
 const inter = Inter({ subsets: ['latin'] })
 type FormValues = {
@@ -10,6 +36,7 @@ type FormValues = {
   apellido: string;
   direccion: string;
   mensaje: string;
+  
 };
 export default function Home() {
   const { register, handleSubmit, formState } = useForm<FormValues>({
@@ -19,8 +46,11 @@ export default function Home() {
   const { isValid } = formState;
 
   const onSubmit = (data: FormValues) => {
+    addMensaje(data);
     console.log(data);
   };
+
+
 
   return (
     <Box sx={{display:"flex", alignContent: "center", textAlign:"center", paddingTop:"15px", paddingRight:"10px ", marginLeft:"15%", marginRight:"10%"}}>
