@@ -2,15 +2,12 @@ import { Grid, TextField, Button, Card, Typography, Box } from '@mui/material'
 import { useForm } from 'react-hook-form';
 import { db } from "./.././services/firebase-config.js";
 import {
-  doc,
   collection,
   getDocs,
   addDoc,
-  setDoc,
-  deleteDoc,
-  Timestamp,
 } from "../../node_modules/firebase/firestore";
-import { AutocompleteInput } from '@/components/Autocomplete/inputMaps.jsx';
+import { AutocompleteInput } from '@/components/Autocomplete/inputMaps.tsx';
+
 
 const collectionmensajes = "mensajes";
 
