@@ -1,5 +1,3 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
 import { Grid, TextField, Button, Card, Typography, Box } from '@mui/material'
 import { useForm } from 'react-hook-form';
 import { db } from "./.././services/firebase-config.js";
@@ -30,16 +28,17 @@ export function addMensaje(data:FormValues) {
   
 }
 
-const inter = Inter({ subsets: ['latin'] })
 type FormValues = {
   nombre: string;
   apellido: string;
+  calle: string;
+  numero:number;
   direccion: string;
   mensaje: string;
   
 };
 export default function Home() {
-  const { register, handleSubmit, formState } = useForm<FormValues>({
+  const { register, handleSubmit, formState,control, setValue } = useForm<FormValues>({
     mode: "onChange",
   });
 
@@ -49,6 +48,12 @@ export default function Home() {
     addMensaje(data);
     console.log(data);
   };
+  const handleDireccionChange = (option: any | null) => {
+   
+    setValue("direccion", option?.formatted_address 
+    ?? "");
+  }
+  
 
 
 
@@ -75,13 +80,28 @@ export default function Home() {
           {...register("apellido", { required: true })}
         />
       </Grid>
-      <Grid item xs={12}>
-        <TextField
+      <Grid item xs={12} sm={6}>
+      <TextField
           fullWidth
-          label="Dirección"
+          label="Calle"
           variant="outlined"
-          {...register("direccion", { required: true })}
+          {...register("calle", { required: true })}
         />
+      </Grid>
+      <Grid item xs={12} sm={6}>
+      <TextField
+      type='number'
+          fullWidth
+          label="Número"
+          variant="outlined"
+          {...register("numero", { required: true })}
+        />
+      </Grid>
+      <Grid item xs={12}>
+      <AutocompleteInput  onChange={ (option: any) =>{
+               handleDireccionChange(option)
+             
+              } } />
       </Grid>
       <Grid item xs={12}>
         <TextField
@@ -92,6 +112,9 @@ export default function Home() {
           rows={4}
           {...register("mensaje", { required: true })}
         />
+      </Grid>
+      <Grid>
+     
       </Grid>
       <Grid item xs={12}>
         <Button
@@ -107,5 +130,9 @@ export default function Home() {
   </form>
     </Card>
     </Box>
+    
   )
 }
+// realizar un dialog con matirialUI,
+
+//AIzaSyBQ5hY7g6JNZ6H19NjO3EyPO4_J2bzAkFA 
