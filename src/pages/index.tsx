@@ -10,6 +10,7 @@ import {
   deleteDoc,
   Timestamp,
 } from "../../node_modules/firebase/firestore";
+import { AutocompleteInput } from '@/components/Autocomplete/inputMaps.jsx';
 
 const collectionmensajes = "mensajes";
 
