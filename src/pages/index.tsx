@@ -1,6 +1,6 @@
 import { Grid, TextField, Button, Card, Typography, Box } from '@mui/material'
 import { useForm } from 'react-hook-form';
-// import { db } from "./.././services/firebase-config.js";
+import { db } from "./.././services/firebase-config.js";
 import {
   collection,
   getDocs,
@@ -12,20 +12,20 @@ import { useState } from 'react';
 
 const collectionmensajes = "mensajes";
 
-// export async function getMensajes() {
-//   const colRef = collection(db, collectionmensajes);
-//   const docsRef = await getDocs(colRef);
-//   console.log(docsRef);
-// }
+export async function getMensajes() {
+  const colRef = collection(db, collectionmensajes);
+  const docsRef = await getDocs(colRef);
+  console.log(docsRef);
+}
 
-// getMensajes();
+getMensajes();
 
 
-// export function addMensaje(data:FormValues) {
+export function addMensaje(data:FormValues) {
   
-//   addDoc(collection(db, collectionmensajes), data);
+  addDoc(collection(db, collectionmensajes), data);
   
-// }
+}
 
 type FormValues = {
   nombre: string;
@@ -46,7 +46,7 @@ export default function Home() {
   const { isValid } = formState;
 
   const onSubmit = (data: FormValues) => {
-    // addMensaje(data);
+    addMensaje(data);
     
     console.log(data);
 
