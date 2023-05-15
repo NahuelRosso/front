@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Autocomplete from "react-google-autocomplete";
-
-
+import API_KEY from "../../config"
 
 export type Option = {
   value: string;
@@ -13,16 +12,17 @@ type AutocompleteProps ={
 }
 
 export const AutocompleteInput = (({onChange}:AutocompleteProps) => {
-  
+ 
   return (
-    
+   
     <Autocomplete 
       style={{padding:"15px", width: "100%", border:"1px solid rgb(133, 133, 133)", borderRadius:"5px", outline:'3px' }}
-      apiKey="AIzaSyBQ5hY7g6JNZ6H19NjO3EyPO4_J2bzAkFA" 
+      apiKey={API_KEY}
       types={["adrress"]}
       lable="Ingrese Localidad"
       onPlaceSelected={(place: any) =>  onChange(place)}
     />
+    
   );
 });
 
