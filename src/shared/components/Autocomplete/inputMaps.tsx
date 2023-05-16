@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Autocomplete from "react-google-autocomplete";
-import API_KEY from "../../config"
+import API_KEY from "../../../config"
 
 export type Option = {
   value: string;
