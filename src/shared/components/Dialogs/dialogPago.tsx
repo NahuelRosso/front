@@ -61,7 +61,12 @@ export default function BasicModal(props:IData) {
            {props.dataDescription}
           </Typography>
           <Grid item xs={12}>
-          <script type="module" src="/src/index.jsx"></script>
+          <Button
+            sx={{marginTop:"15px"}}
+           type="submit"
+           variant="outlined"
+           color="primary"
+           href='https://mpago.la/12F6afG'>Pagar</Button>
            </Grid>
         </Box>
       </Modal>
