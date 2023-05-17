@@ -61,11 +61,7 @@ export default function BasicModal(props:IData) {
            {props.dataDescription}
           </Typography>
           <Grid item xs={12}>
-          <Button
-            sx={{marginTop:"15px"}}
-           type="submit"
-           variant="outlined"
-           color="primary">Pagar</Button>
+          <script type="module" src="/src/index.jsx"></script>
            </Grid>
         </Box>
       </Modal>
